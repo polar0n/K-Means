@@ -1,15 +1,17 @@
 import numpy as np
 
 
-def k_means(data: np.array, k:int) -> list[np.array]:
+def k_means(data: np.array, k:int, iterations: int=5) -> list[np.array]:
     '''
     Clusters `data` into `k` groups.
 
     Input:
 
-    `data`: `np.array` - a numpy array with the data
+    `data`: `np.array` - a numpy array with the data.
 
-    `k`: `int` - number of partitions
+    `k`: `int` - number of partitions.
+
+    `iterations`: `int` - number of models to test.
 
     Output:
     
@@ -27,7 +29,7 @@ def k_means(data: np.array, k:int) -> list[np.array]:
     clusters = list()
 
     # Run five iterations with 5 randomly chosen representatives
-    for _ in range(5):
+    for _ in range(iterations):
         objective = list()
         # Randomly choose k representative for each ki-group
         centers = data[np.random.choice(np.arange(data.shape[0]), k, replace=False)]
