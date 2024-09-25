@@ -49,7 +49,7 @@ def k_means(data: np.array, k:int, iterations: int=5) -> list[np.array]:
             groups = np.array([np.argmin([np.linalg.norm(center - x) for center in centers]) for x in data])
             # Append the calculated objective of the current clustering
             objective.append(
-                np.array([np.linalg.norm(data[i] - centers[groups[i]]) for i in range(data.shape[0])]).sum()
+                np.array([np.linalg.norm(data[i] - centers[groups[i]]) for i in range(data.shape[0])]).mean()
             )
             if i > 2 and ((objective[-1] - objective[-2]) + (objective[-2] - objective[-3])) < 1.0:
                 # If the sum of the differences between the last two pairs of objectives is less than 1.0
